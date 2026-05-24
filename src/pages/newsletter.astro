@@ -1,0 +1,28 @@
+---
+import Base from "../layouts/Base.astro";
+
+const submitUrl = String(import.meta.env.PUBLIC_NEWSLETTER_SUBMIT_URL ?? "").trim();
+---
+
+<Base title="Newsletter">
+  <div class="wrap">
+    <a class="back" href="/">← All samples</a>
+    <h1>Newsletter</h1>
+    <p class="desc">1 field — email only.</p>
+
+    <form
+      data-mailer-form
+      data-submit-url={submitUrl}
+      data-env-name="PUBLIC_NEWSLETTER_SUBMIT_URL"
+    >
+      <input type="checkbox" name="botcheck" value="1" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <div class="field">
+        <label for="nl-email">Email</label>
+        <input id="nl-email" name="email" type="email" required maxlength="320" autocomplete="email" />
+      </div>
+      <button type="submit">Subscribe</button>
+      <div class="banner hidden" data-form-success role="status" aria-live="polite"><p></p></div>
+      <div class="banner hidden" data-form-error role="alert" aria-live="assertive"><p></p></div>
+    </form>
+  </div>
+</Base>

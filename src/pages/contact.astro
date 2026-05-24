@@ -1,0 +1,40 @@
+---
+import Base from "../layouts/Base.astro";
+
+const submitUrl = String(import.meta.env.PUBLIC_CONTACT_SUBMIT_URL ?? "").trim();
+---
+
+<Base title="Contact">
+  <div class="wrap">
+    <a class="back" href="/">← All samples</a>
+    <h1>Contact</h1>
+    <p class="desc">Many fields — name, email, message, optional attachment.</p>
+
+    <form
+      data-mailer-form
+      data-submit-url={submitUrl}
+      data-env-name="PUBLIC_CONTACT_SUBMIT_URL"
+    >
+      <input type="checkbox" name="botcheck" value="1" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <div class="field">
+        <label for="ct-name">Name</label>
+        <input id="ct-name" name="name" type="text" required maxlength="200" autocomplete="name" />
+      </div>
+      <div class="field">
+        <label for="ct-email">Email</label>
+        <input id="ct-email" name="email" type="email" required maxlength="320" autocomplete="email" />
+      </div>
+      <div class="field">
+        <label for="ct-message">Message</label>
+        <textarea id="ct-message" name="message" required maxlength="20000"></textarea>
+      </div>
+      <div class="field">
+        <label for="ct-attachment">Attachment (optional)</label>
+        <input id="ct-attachment" name="attachment" type="file" />
+      </div>
+      <button type="submit">Send</button>
+      <div class="banner hidden" data-form-success role="status" aria-live="polite"><p></p></div>
+      <div class="banner hidden" data-form-error role="alert" aria-live="assertive"><p></p></div>
+    </form>
+  </div>
+</Base>

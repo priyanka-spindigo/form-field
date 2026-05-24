@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: form-field
+    runtime: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: PUBLIC_NEWSLETTER_SUBMIT_URL
+        sync: false
+      - key: PUBLIC_QUICK_CONTACT_SUBMIT_URL
+        sync: false
+      - key: PUBLIC_CONTACT_SUBMIT_URL
+        sync: false

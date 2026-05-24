@@ -1,0 +1,32 @@
+---
+import Base from "../layouts/Base.astro";
+
+const submitUrl = String(import.meta.env.PUBLIC_QUICK_CONTACT_SUBMIT_URL ?? "").trim();
+---
+
+<Base title="Quick contact">
+  <div class="wrap">
+    <a class="back" href="/">← All samples</a>
+    <h1>Quick contact</h1>
+    <p class="desc">2 fields — name and email.</p>
+
+    <form
+      data-mailer-form
+      data-submit-url={submitUrl}
+      data-env-name="PUBLIC_QUICK_CONTACT_SUBMIT_URL"
+    >
+      <input type="checkbox" name="botcheck" value="1" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <div class="field">
+        <label for="qc-name">Name</label>
+        <input id="qc-name" name="name" type="text" required maxlength="200" autocomplete="name" />
+      </div>
+      <div class="field">
+        <label for="qc-email">Email</label>
+        <input id="qc-email" name="email" type="email" required maxlength="320" autocomplete="email" />
+      </div>
+      <button type="submit">Send</button>
+      <div class="banner hidden" data-form-success role="status" aria-live="polite"><p></p></div>
+      <div class="banner hidden" data-form-error role="alert" aria-live="assertive"><p></p></div>
+    </form>
+  </div>
+</Base>
